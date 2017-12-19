@@ -1,2 +1,5 @@
-# -2017B3B-TP-DevOps---Matthieu-D.-Clement-R.
-Devoir TP Matthieu D. Clément R.
+# [2017B3B] TP Final Devops
+
+# Membres 
+* **Delecluse** Matthieu
+* **Ruiz** Clément
