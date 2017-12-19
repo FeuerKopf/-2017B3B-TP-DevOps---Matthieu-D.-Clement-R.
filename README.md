@@ -1,5 +1,5 @@
-# [2017B3B] TP Final Devops
+# [2017B3B] TP DevOps - Final
 
-# Membres 
+## Membres 
 * **Delecluse** Matthieu
 * **Ruiz** Clément
