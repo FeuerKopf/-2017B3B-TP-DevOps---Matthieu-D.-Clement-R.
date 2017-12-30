@@ -1,21 +1,23 @@
 FROM node:carbon
 
-LABEL groupe_members = “Matthieu DELECLUSE / Clément RUIZ”
-
-ENV NODE_ENV=”development”
-ENV PORT=”8080”
-
-ENV MONGO_HOST=”mongodb”
-ENV MONGO_PORT=”27017”
-ENV MONGO_USER=”app”
-ENV MONGO_PASSWD=”S€cur3-P@$$”
-ENV MONGO_DATABASE=”app”
-
-RUN apt-get update && apt-get install -y git
+LABEL groupe_members = "Matthieu DELECLUSE / Clément RUIZ"
 
 WORKDIR /usr/src/app
+# Après quelques tests, nous avons remarqué que git était compris dans l'image. Pas besoin de l'installer
 RUN git clone https://github.com/Tronix117/wik-devops-3tp.git .
+COPY app.js ./
+COPY package.json ./
+
 RUN npm install
 
+ENV NODE_ENV="development" \
+PORT="8080" \
+MONGO_HOST="mongodb" \
+MONGO_PORT="27017" \
+MONGO_USER="app" \
+MONGO_PASSWORD="S€cur3-P@$$" \
+MONGO_DATABASE="app"
+
 EXPOSE 8080
-CMD [“node”, “app.js”]
+
+CMD ["node","app.js"]

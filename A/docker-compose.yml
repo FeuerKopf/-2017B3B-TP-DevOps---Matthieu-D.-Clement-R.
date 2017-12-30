@@ -1,31 +1,43 @@
-version:'3'
+version : '3'
+
+networks:
+  app:
+    driver: bridge
+
+
 services:
-   db-mongo:
-     image: mvertes/alpine-mongo:latest
-     networks:
-       - back-tier
-     volumes:
-       - db-data:/data/db
-   backend:
-     build: .
-     command: nodemon . --exitcrash
-     volumes:
-       - .:/app
-       - dependencies:/app/node_modules
-     ports:
-       - "3003:3000"
-     links:
-       - db-mongo
-     environment:
-       - PORT=3000
-       - NODE_ENV=development
-     networks:
-       - front-tier
-       - back-tier networks:
-   front-tier:
-     driver: bridge
-   back-tier:
-     driver: bridge
- volumes:
-   dependencies:
-   db-data:
+  mongodb:
+    image: mongo
+    hostname: mongodb
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=app
+      - MONGO_INITDB_ROOT_PASSWORD=S€cur3-P@$$
+    networks:
+      app:
+        aliases:
+          - mongodb
+          - mongodb.docker
+
+  app:
+    build:
+      context: .
+    hostname: app
+    depends_on:
+      - mongodb
+    ports:
+      - 80:8080
+    environment:
+      - NODE_ENV="development"
+      - MONGO_HOST=mongodb
+      - MONGO_PORT=27017
+      - MONGO_USER=app
+      - MONGO_PASSWORD=S€cur3-P@$$
+      - MONGO_DATABASE=admin # Valeur non choisie au hasard ;) Ne connaissant pas encore le scripting shell de Mongo, on repassera pour créer une base de données à partir d'un script, lui ajouter des utilisateurs etc...
+    networks:
+      app:
+        aliases:
+          - app
+          - app.docker
+
+volumes:
+  data:
