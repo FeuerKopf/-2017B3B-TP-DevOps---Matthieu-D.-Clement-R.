@@ -38,6 +38,3 @@ services:
         aliases:
           - app
           - app.docker
-
-volumes:
-  data:
