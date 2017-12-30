@@ -1,0 +1,32 @@
+- hosts: mongo-slave
+  remote_user: ubuntu
+  sudo: yes
+  roles:
+   - greendayonfire.mongodb
+  vars:
+   mongodb_net_bindip: 0.0.0.0
+   mongodb_users:
+      - {
+        name: papy,
+        password: Bretzel!,
+        roles: readWrite,
+        database: rickrolled
+        }
+- hosts: mongo-master
+  remote_user: ubuntu
+  sudo: yes
+  roles:
+   - greendayonfire.mongodb
+  vars:
+    mongodb_security_authorization: "enabled"
+    mongodb_users:
+     - {
+       name: papy,
+       password: Bretzel!,
+       roles: dbAdminAnyDatabase,
+       database: rickrolled
+       }
+    mongodb_replication_params:
+     - host_type: "replica"
+    mongodb_user_admin_name: papy
+    mongodb_user_admin_password: Bretzel!
