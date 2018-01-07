@@ -1,0 +1,8 @@
+mongodb_security_authorization: "enabled"
+mongodb_users:
+  - {
+    name: homecolis,
+    password: homecolispass,
+    roles: readWrite,
+    database: homecolis
+  }
