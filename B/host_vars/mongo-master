@@ -1,8 +1,15 @@
 mongodb_security_authorization: "enabled"
 mongodb_users:
   - {
-  name: homecolis,
-  password: homecolispass,
-  roles: readWrite,
-  database: homecolis
+    name: homecolis,
+    password: homecolispass,
+    roles: readWrite,
+    database: homecolis
+  }
+  
+mongodb_replication_replset: homecolis
+mongodb_replication_params:
+  - {
+    host_name: ec2-54-190-18-211.us-west-2.compute.amazonaws.com
+    host_type: replica
   }
