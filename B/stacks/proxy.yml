@@ -1,0 +1,61 @@
+version: "3.0"
+services:
+ haproxy:
+  image: dockercloud/haproxy
+  deploy:
+   mode: global
+   update_config:
+    parallelism: 1
+    delay: 5s
+   resources:
+    limits:
+     cpus: "0.05"
+     memory: 64M
+    reservations:
+     cpus: "0.01"
+     memory: 20M
+   restart_policy:
+    condition: on-failure
+    delay: 5s
+    max_attempts: 3
+   placement:
+    constraints:
+      - node.role == manager  # Merci les autres groupes ... :/
+  ports:
+   - "80:80"
+  volumes:
+   - '/var/run/docker.sock:/var/run/docker.sock'
+  networks:
+   - proxy
+  environment:
+   - RELOAD_TIMEOUT=-1
+   - HEALTH_CHECK=check inter 2000 rise 2 fall 3
+   - EXTRA_GLOBAL_SETTINGS=spread-checks 5
+
+ helloworld:
+  image: dockercloud/hello-world
+  deploy:
+   replicas: 4
+   update_config:
+    parallelism: 1
+    delay: 4s
+   resources:
+    limits:
+     cpus: "0.1"
+     memory: 50M
+    reservations:
+     cpus: '0.001'
+     memory: 20M
+   restart_policy:
+    condition: on-failure
+    delay: 5s
+    max_attempts: 3
+  environment:
+   - SERVICE_PORTS=80
+   - VIRTUAL_HOST=http://hello.homecolis.mdcr
+  networks:
+   - proxy
+
+networks:
+ proxy:
+  driver: overlay
