@@ -12,6 +12,7 @@
         roles: readWrite,
         database: homecolis
       }
+    mongodb_net_bindip: 0.0.0.0
 
 - name: "Provisionning Mongodb (Slave)"
   hosts: mongo_slave
@@ -27,3 +28,4 @@
         roles: readWrite,
         database: homecolis
       }
+    mongodb_net_bindip: 54.218.78.227
