@@ -2,10 +2,26 @@
   hosts: mongo_master
   become: true
   roles:
-    - greendayonfire.mongodb
+    - role: greendayonfire.mongodb
+    mongodb_security_authorization: "enabled"
+    mongodb_users:
+      - {
+        name: homecolis,
+        password: homecolispass,
+        roles: readWrite,
+        database: homecolis
+      }
 
 - name: "Provisionning Mongodb (Slave)"
   hosts: mongo_slave
   become: true
   roles:
-   - greendayonfire.mongodb
+    - role: greendayonfire.mongodb
+    mongodb_security_authorization: "enabled"
+    mongodb_users:
+      - {
+        name: homecolis,
+        password: homecolispass,
+        roles: readWrite,
+        database: homecolis
+      }
