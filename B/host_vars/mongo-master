@@ -6,10 +6,18 @@ mongodb_users:
     roles: readWrite,
     database: homecolis
   }
+<<<<<<< HEAD
 
 mongodb_replication_replset: homecolis
 mongodb_replication_params:
   - {
     host_name: ec2-54-190-18-211.us-west-2.compute.amazonaws.com,
+=======
+  
+mongodb_replication_replset: homecolis
+mongodb_replication_params:
+  - {
+    host_name: ec2-54-190-18-211.us-west-2.compute.amazonaws.com
+>>>>>>> 97099c53fd90748ac99ca96833ecb36e5a57033e
     host_type: replica
   }
