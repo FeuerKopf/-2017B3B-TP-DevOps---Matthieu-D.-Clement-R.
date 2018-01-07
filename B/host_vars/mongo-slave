@@ -1,8 +1,1 @@
-mongodb_security_authorization: "enabled"
-mongodb_users:
-  - {
-    name: homecolis,
-    password: homecolispass,
-    roles: readWrite,
-    database: homecolis
-  }
+mongodb_net_bindip: 127.0.0.1, 54.190.18.211
