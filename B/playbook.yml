@@ -1,8 +1,8 @@
 - name: "Provisionning Mongodb (Master)"
   hosts: mongo_master
   become: true
-  roles:
-    - role: greendayonfire.mongodb
+  roles: greendayonfire.mongodb
+  vars:
     mongodb_security_authorization: "enabled"
     mongodb_users:
       - {
@@ -15,8 +15,8 @@
 - name: "Provisionning Mongodb (Slave)"
   hosts: mongo_slave
   become: true
-  roles:
-    - role: greendayonfire.mongodb
+  roles: greendayonfire.mongodb
+  vars:
     mongodb_security_authorization: "enabled"
     mongodb_users:
       - {
