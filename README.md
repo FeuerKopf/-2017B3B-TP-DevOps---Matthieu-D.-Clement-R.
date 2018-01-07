@@ -4,10 +4,27 @@
 * **Delecluse** Matthieu
 * **Ruiz** Clément
 
+## Roadmap
+### A
+* OK
+
+### B
+* provisionning mongo DB --> OK
+* cluster mongo répliqué --> réplication à revoir
+* provisionning docker swarm --> OK
+* stack proxy --> OK
+* stack registry --> TODO
+* stack api --> TODO
+
+### C
+* C1 --> à revoir
+* C2 --> TODO
+* C3 --> TODO
+
 ## Note à l'attention du correcteur
 
 Bonjour. </br>
-Suite au manque de pratique sur Ansible et en particulier mongodb, couplé à un emploi du temps chargé en ces périodes de fêtes (alternance = pad'vacances!), nous n'avons pas été en mesure d'aller plus loin dans ce TP. Nous avons dispersé une partie de notre temps dans la recherche de documentations sur des roles ansibles capables d'instancier correctement Mongo et Swarm, et nous voici à ce jour contraints de vous présenter un dossier inachevé, à notre plus grand regret. Cependant, nous ne baissons pas les bras, et comptons aller au bout de ce devoir dans les jours / semaines à suivre.
+Nous avons le regret aujourd'hui de vous présenter un projet non terminé. Nous avons été le plus loin possible dans le temps que nous pouvions accorder à ce rendu (alternance, pas d'vacances ! =D). Cependant, le reste nous semble abordable et nous terminerons ce projet, et ce même après l'arrêt des notes. 
 
-Merci, Cordialement</br>
+Merci pour cette année, Cordialement</br>
 _Clément Ruiz_ // _Matthieu Delecluse_
