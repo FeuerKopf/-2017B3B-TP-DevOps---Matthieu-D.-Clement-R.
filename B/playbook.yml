@@ -27,3 +27,9 @@
         roles: readWrite,
         database: homecolis
       }
+
+- name: "Provision a Docker Swarm cluster"
+  hosts: docker_engine
+  become: true
+  roles:
+    - role: atosatto.docker-swarm
